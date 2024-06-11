@@ -1,0 +1,47 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.first-part {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12rem;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 12rem;
+}
+
+.second-part {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.bck-to-store-button {
+  background-color: #5995fd;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.bck-to-store-button {
+  width: 10rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+

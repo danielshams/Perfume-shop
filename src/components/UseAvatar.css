@@ -1,0 +1,7 @@
+.avatar-image {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  border: 0.3rem solid white; 
+  box-shadow: 0 0 0 0.1rem #8a8c91; 
+}
