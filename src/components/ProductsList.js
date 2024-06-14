@@ -26,9 +26,9 @@ export default function ProductsList() {
 
   if (isLoading)
     return (
-      <p className="loading">
+      <div className="loading">
         <Spinner />
-      </p>
+      </div>
     );
 
   return (

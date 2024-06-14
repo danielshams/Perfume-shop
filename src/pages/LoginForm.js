@@ -5,24 +5,38 @@ import { useLogin } from "../authentication/useLogin";
 import Spinner from "../components/Spinner";
 import { useSignUp } from "../authentication/useSignUp";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-export default function LoginّForm() {
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required(),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
+});
+
+export default function LoginForm() {
   const [signUpMode, setSignUpMode] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
-  const { register, formState,  handleSubmit, reset } = useForm();
+  const { register, handleSubmit, formState, reset } = useForm({
+    resolver: yupResolver(schema),
+  });
   const { errors } = formState;
   const { signup } = useSignUp();
 
-  function onSubmit({ name, email, password }) {
-    signup(
-      { name, email, password },
-      {
-        onSettled: reset,
-      }
-    );
+  function onSubmit(data) {
+    console.log(data);
+    signup(data, {
+      onSettled: () => {
+        reset();
+      },
+    });
   }
+  
 
   function handleSubmit2(e) {
     e.preventDefault();
@@ -90,6 +104,7 @@ export default function LoginّForm() {
                 {...register("name")}
                 required
               />
+              {errors.name && <p>{errors.name.message}</p>}
             </div>
 
             <div className="input-field">
@@ -101,6 +116,7 @@ export default function LoginّForm() {
                 {...register("email")}
                 required
               />
+              {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
@@ -111,6 +127,7 @@ export default function LoginّForm() {
                 {...register("password")}
                 required
               />
+              {errors.password && <p>{errors.password.message}</p>}
             </div>
             <div
               className="input-field"
@@ -124,6 +141,9 @@ export default function LoginّForm() {
                 {...register("passwordConfirm")}
                 required
               />
+              {errors.passwordConfirm && (
+                <p>{errors.passwordConfirm.message}</p>
+              )}
             </div>
             <button type="submit" className="btn">
               ادامه

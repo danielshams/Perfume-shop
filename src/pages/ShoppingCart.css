@@ -24,17 +24,16 @@
 
 .added-product {
   direction: rtl;
-  display: grid; 
+  display: grid;
   align-items: center;
   justify-content: center;
   justify-items: center;
   align-content: center;
-  grid-template-columns: repeat(5, 1fr); 
-  width:50%;
+  grid-template-columns: repeat(5, 1fr);
+  width: 50%;
   border-bottom: 1px solid #dddcdc;
   padding: 1rem;
 }
-
 
 .added-product-image {
   object-fit: cover;
@@ -54,11 +53,11 @@
   gap: 1rem;
 }
 
-.added-product-price{
+.added-product-price {
   color: gray;
 }
 
-.total-price{
+.total-price {
   margin-top: 2rem;
   background-color: rgb(245, 92, 92);
   color: white;
@@ -88,7 +87,6 @@
   transition: 1s;
 }
 
-
 .swal2-confirm {
   background-color: red !important;
   color: white !important;
@@ -101,4 +99,16 @@
 
 .swal2-title {
   font-size: 1.3rem;
+}
+
+@media (max-width: 900px) {
+  .added-product {
+    display: grid;
+    column-gap: 3rem;
+  }
+
+  .total-price {
+    width: 15rem;
+    font-size: 1rem;
+  }
 }

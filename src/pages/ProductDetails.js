@@ -43,10 +43,10 @@ export default function ProductDetails() {
 
   if (isLoading)
     return (
-      <p className="loading">
+      <div className="loading">
         <Spinner />
-      </p>
-    )
+      </div>
+    );
 
   if (!perfume) {
     return "Product not found";
