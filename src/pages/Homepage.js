@@ -15,7 +15,7 @@ export default function Homepage() {
         <ProductsList />
         <ScrollToTopButton />
       </Main>
-        <Footer/>
+      <Footer />
     </>
   );
 }
