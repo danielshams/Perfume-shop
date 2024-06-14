@@ -34,7 +34,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
-              <Route index element={<Homepage />} />
+              <Route path="/homepage" index element={<Homepage />} />
               <Route path="/originalperfume" element={<OriginalPerfume />} />
               <Route path="/menperfume" element={<MenPerfume />} />
               <Route path="/womenperfume" element={<WomenPerfume />} />

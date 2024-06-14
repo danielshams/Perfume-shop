@@ -215,8 +215,6 @@ form.sign-in-form {
   transform: translateX(800px);
 }
 
-/* ANIMATION */
-
 .container.sign-up-mode:before {
   transform: translate(100%, -50%);
   right: 52%;
@@ -356,6 +354,13 @@ form.sign-in-form {
     transform: translate(-50%, 0);
   }
 }
+
+.error-message {
+  color: red;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
 
 @media (max-width: 570px) {
   form {

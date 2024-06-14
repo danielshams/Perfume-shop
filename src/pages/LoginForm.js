@@ -14,7 +14,7 @@ const schema = yup.object().shape({
   password: yup.string().min(8).required(),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
+    .oneOf([yup.ref("password"), null], "رمز عبور باید یکسان باشد!"),
 });
 
 export default function LoginForm() {
@@ -126,12 +126,12 @@ export default function LoginForm() {
                 {...register("password")}
                 required
               />
-              {errors.password && <p>{errors.password.message}</p>}
             </div>
+              {errors.password && <p className="error-message">رمز عبور باید حداقل 8 کاراکتر باشد!</p>}
             <div
               className="input-field"
               error={errors?.passwordConfirm?.message}
-            >
+              >
               <i className="fas fa-lock"></i>
               <input
                 type="password"
@@ -140,10 +140,12 @@ export default function LoginForm() {
                 {...register("passwordConfirm")}
                 required
               />
-              {errors.passwordConfirm && (
-                <p>{errors.passwordConfirm.message}</p>
-              )}
             </div>
+              {errors.passwordConfirm && (
+                <p className="error-message">
+                  {errors.passwordConfirm.message}
+                </p>
+              )}
             <button type="submit" className="btn">
               ادامه
             </button>
