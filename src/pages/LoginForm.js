@@ -36,7 +36,6 @@ export default function LoginForm() {
       },
     });
   }
-  
 
   function handleSubmit2(e) {
     e.preventDefault();
