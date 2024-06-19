@@ -23,7 +23,7 @@ export default function Product({ perfume }) {
             <img
               className="product-image"
               src={perfume.image}
-              alt="image of product"
+              alt="product"
             />
           </div>
 

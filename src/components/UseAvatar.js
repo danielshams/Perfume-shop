@@ -12,7 +12,7 @@ export default function UseAvatar() {
 
   return (
     <div>
-      <img className="avatar-image" src={avatar} alt="image" />
+      <img className="avatar-image" src={avatar} alt="user" />
     </div>
   );
 }
