@@ -27,6 +27,9 @@ export default function ProductDetails() {
       if (productInCart) {
         setButtonText("اضافه شد به سبد خرید");
         setIsAddedToCart(true);
+      } else {
+        setButtonText("افزودن به سبد خرید");
+        setIsAddedToCart(false);
       }
     }
   }, [cart, perfume]);
@@ -34,9 +37,11 @@ export default function ProductDetails() {
   const addToCart = () => {
     const productInCart = cart.find((item) => item.id === perfume.id);
     if (!productInCart) {
-      setCart([...cart, { ...perfume, quantity: count }]);
+      const newCart = [...cart, { ...perfume, quantity: count }];
+      setCart(newCart);
       setButtonText("اضافه شد به سبد خرید");
       setIsAddedToCart(true);
+      localStorage.setItem("cart", JSON.stringify(newCart));
       toast.success("محصول با موفقیت به سبد خرید اضافه شد");
     }
   };
@@ -57,7 +62,7 @@ export default function ProductDetails() {
       <NavBar showSearch={false} />
       <ToastContainer />
       <div className="product-details">
-        <img className="product-details-img" src={perfume.image} />
+        <img className="product-details-img" src={perfume.image} alt="Product"/>
         <div className="product-details-options ">
           <h2 className="product-details-name">{perfume.name}</h2>
           <p className="product-details-des">{perfume.description}</p>

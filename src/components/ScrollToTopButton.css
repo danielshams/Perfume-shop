@@ -1,7 +1,33 @@
+@keyframes slide-up-bounce {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-30px);
+  } 
+  70% {
+    transform: translateY(15px);
+  } 
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}
+
+.slide-up-bounce {
+  animation: slide-up-bounce 0.6s forwards;
+}
+
+.scroll-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 1.5rem;
   background-color: #3498db;
   color: white;
   border: none;

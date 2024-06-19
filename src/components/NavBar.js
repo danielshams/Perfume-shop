@@ -55,7 +55,7 @@ export default function NavBar({ showSearch = true }) {
           )}
           {user ? (
             <NavLink to="/dashboard" className="user-email">
-              <p>{user.email}</p>
+              <p className="user-email-text">{user.email}</p>
             </NavLink>
           ) : (
             <NavLink to="/loginForm">
@@ -65,7 +65,7 @@ export default function NavBar({ showSearch = true }) {
         </div>
 
         <NavLink to="/homepage" className="logo">
-          <img src="logoipsum-329.svg" alt="logo" />
+          <img src="/logoipsum-329.svg" alt="logo" className="logo-pic" />
         </NavLink>
 
         <ul id="navbar" className={isClicked ? "#navbar active" : "#navbar"}>
@@ -142,7 +142,7 @@ export default function NavBar({ showSearch = true }) {
       </header>
       {isClicked && (
         <div
-          className={`backdrop ${isClicked ? "show" : ""}`}
+          className={`overlay ${isClicked ? "show" : ""}`}
           onClick={handleClose}
         ></div>
       )}

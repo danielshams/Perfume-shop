@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./ScrollToTopButton.css"
+import "./ScrollToTopButton.css";
+
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 800) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -27,12 +28,14 @@ export default function ScrollToTopButton() {
   }, []);
 
   return (
-    <button
-      onClick={scrollToTop}
-      style={{ display: isVisible ? "inline" : "none" }}
-      className="scroll-to-top"
-    >
-      ↑
-    </button>
+    <div className="scroll-container">
+      <button
+        onClick={scrollToTop}
+        style={{ display: isVisible ? "inline" : "none" }}
+        className={`scroll-to-top ${isVisible ? "slide-up-bounce" : ""}`}
+      >
+        ↑
+      </button>
+    </div>
   );
 }

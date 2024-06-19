@@ -6,11 +6,10 @@ import { CartContext } from "../Context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 export default function ShoppingCart() {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
 
-  const removeFromCart = (id) => {
+  const handleRemoveFromCart = (id) => {
     Swal.fire({
       title: "آیا از حذف این محصول اطمینان دارید؟",
       icon: "warning",
@@ -21,7 +20,7 @@ export default function ShoppingCart() {
       cancelButtonText: "خیر",
     }).then((result) => {
       if (result.isConfirmed) {
-        setCart(cart.filter((item) => item.id !== id));
+        removeFromCart(id);
         toast.success(".محصول با موفقیت حذف شد");
       }
     });
@@ -33,7 +32,7 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <ToastContainer/>
+      <ToastContainer />
       <NavBar showSearch={false} />
       <div className="all-added-products">
         {cart.length > 0 ? (
@@ -50,7 +49,7 @@ export default function ShoppingCart() {
 
               <button
                 className="delete-added-product"
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => handleRemoveFromCart(item.id)}
               >
                 ×
               </button>
