@@ -15,9 +15,8 @@ export function useLogin() {
       navigate("/dashboard", { replace: true });
       toast.success("خوش آمدید!");
     },
-    onError: (err) => {
-      console.log("ERROR", err);
-      toast.error("Provided email or password are incorrect");
+    onError: () => {
+      toast.error("!رمز عبور یا ایمیل وارد شده اشتباه است");
     },
   });
 

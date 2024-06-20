@@ -53,6 +53,7 @@ export default function LoginForm() {
   }
 
   const toggleSignUpMode = () => {
+    reset();
     setSignUpMode(!signUpMode);
   };
 
@@ -127,11 +128,15 @@ export default function LoginForm() {
                 required
               />
             </div>
-              {errors.password && <p className="error-message">رمز عبور باید حداقل 8 کاراکتر باشد!</p>}
+            {errors.password && (
+              <p className="error-message">
+                رمز عبور باید حداقل 8 کاراکتر باشد!
+              </p>
+            )}
             <div
               className="input-field"
               error={errors?.passwordConfirm?.message}
-              >
+            >
               <i className="fas fa-lock"></i>
               <input
                 type="password"
@@ -141,11 +146,9 @@ export default function LoginForm() {
                 required
               />
             </div>
-              {errors.passwordConfirm && (
-                <p className="error-message">
-                  {errors.passwordConfirm.message}
-                </p>
-              )}
+            {errors.passwordConfirm && (
+              <p className="error-message">{errors.passwordConfirm.message}</p>
+            )}
             <button type="submit" className="btn">
               ادامه
             </button>

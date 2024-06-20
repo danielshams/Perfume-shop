@@ -5,7 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import "./UpdatePasswordForm.css";
 
 function UpdatePasswordForm() {
-  const { register, handleSubmit, formState, getValues, reset } = useForm();
+  const { register, handleSubmit, formState, getValues, reset } = useForm({
+    defaultValues: {
+      password: "",
+      passwordConfirm: "",
+    },
+  });
   const { errors } = formState;
 
   const { updateUser, isUpdating } = useUpdateUser();
@@ -22,6 +27,9 @@ function UpdatePasswordForm() {
           reset();
           toast.success("رمز عبور شما با موفقیت بروزرسانی شد");
         },
+        onError: (error) => {
+          toast.error("بروز رسانی رمز عبور با خطا مواجه شد");
+        },
       }
     );
   }
@@ -34,7 +42,7 @@ function UpdatePasswordForm() {
         className="input"
         type="password"
         id="password"
-        autoComplete="current-password"
+        autoComplete="new-password"
         disabled={isUpdating}
         required
         {...register("password", {
@@ -49,7 +57,6 @@ function UpdatePasswordForm() {
       <input
         className="input"
         placeholder="تکرار رمز عبور"
-        error={errors?.passwordConfirm?.message}
         type="password"
         autoComplete="new-password"
         id="passwordConfirm"
