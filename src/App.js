@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard";
 import ProductDetails from "./pages/ProductDetails";
 import { CartProvider } from "./Context/CartContext";
 import { SearchProvider } from "./Context/SearchContext";
+import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ function App() {
       <CartProvider>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
+            <ToastContainer />
             <Routes>
               <Route path="/homepage" element={<Homepage />} />
               <Route path="*" element={<Navigate to="/homepage" />} />
